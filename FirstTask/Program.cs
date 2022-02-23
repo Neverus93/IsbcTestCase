@@ -1,6 +1,6 @@
-﻿using FirstTask.Model;
-using System.Collections.Concurrent;
+﻿using System.Collections.Concurrent;
 using System.Collections.Generic;
+using System;
 
 namespace FirstTask
 {
@@ -19,6 +19,7 @@ namespace FirstTask
             {
                 Numbers numbers = new Numbers(i, numbersQueue);
             }
+            Console.ReadKey();
         }
     }
 }

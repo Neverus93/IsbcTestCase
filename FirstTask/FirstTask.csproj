@@ -43,9 +43,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Model\Numbers.cs" />
-    <Compile Include="ViewModel\ProgramViewModel.cs" />
-    <Compile Include="VIew\Program.cs" />
+    <Compile Include="Numbers.cs" />
+    <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

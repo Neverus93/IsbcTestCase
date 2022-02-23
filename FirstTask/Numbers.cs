@@ -2,7 +2,7 @@
 using System.Collections.Concurrent;
 using System.Threading;
 
-namespace FirstTask.Model
+namespace FirstTask
 {
     class Numbers
     {
@@ -10,11 +10,8 @@ namespace FirstTask.Model
         private Thread numberThread;
         private int count = 5;
 
-        public ConcurrentQueue<int> NumbersQueue { get; set; }
-
         public Numbers(int countOfThreads, ConcurrentQueue<int> numbersQueue)
         {
-            NumbersQueue = numbersQueue;
             numberThread = new Thread(() => OutputNumber(numbersQueue));
             numberThread.Name = $"Поток {countOfThreads}";
             numberThread.Start();
