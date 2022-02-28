@@ -75,7 +75,7 @@ namespace SecondTask
 
         private static int FindMinValueOfArray(HystogramNode[] array)
         {
-            int minValue = 1;
+            int minValue = array[0].NodeHeight;
             for(int i = 0; i < array.Length; i++)
             {
                 if(minValue > array[i].NodeHeight)
