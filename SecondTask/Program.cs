@@ -11,20 +11,10 @@ namespace SecondTask
             //Console.Write("Введите максимальное значение высоты прямоугольника в гистограмме: ");
             //int rectangleMaxHeight = int.Parse(Console.ReadLine());
 
-            HystogramNode[] test = new HystogramNode[3];
-            test[0] = new HystogramNode(1, 10);
-            test[1] = new HystogramNode(2, 5);
-            test[2] = new HystogramNode(3, 10);
-            //test[3] = new HystogramNode(4, 8);
-            //test[4] = new HystogramNode(5, 6);
-            //test[5] = new HystogramNode(6, 4);
-            //test[6] = new HystogramNode(7, 8);
-            //test[7] = new HystogramNode(8, 5);
-            //test[8] = new HystogramNode(9, 4);
-            //test[9] = new HystogramNode(10, 6);
+            int[] test = { 10, 5, 10, 8, 6, 4, 8, 5, 4, 6 };
 
-            //HystogramNode[] hystogramHeightArray = HystogramNode.GenerateHeightArray(countOfRectangles, rectangleMaxHeight);
-            int maxHystogramRectangleArea = HystogramNode.MaximumRectangleArea(test);
+            //int[] hystogramHeightArray = HystogramMathHelper.HeightArrayGenerator(countOfRectangles, rectangleMaxHeight);
+            int maxHystogramRectangleArea = HystogramMathHelper.MaximumRectangleArea(test);
 
             Console.WriteLine("Сгенерированы следующие узлы гистограммы:");
             for (int i = 0; i < test.Length; i++)
