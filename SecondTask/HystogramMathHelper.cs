@@ -18,34 +18,7 @@ namespace SecondTask
 
         public static int MaximumRectangleArea(int[] array)
         {
-            int maxRectangleArea = -1;
-            for(int j = 0; j < array.Length; j++)
-            {
-                int height = array[j];
-                for(int i = j; i < array.Length; i++)
-                {
-                    bool isLast = i == array.Length - 1;
-                    if(array[i] < array[j])
-                    {
-                        int width = i - j;
-                        int resultArea = CalculateBlockArea(width, height);
-                        if(resultArea > maxRectangleArea)
-                        {
-                            maxRectangleArea = resultArea;
-                        }
-                    }
-                    if (isLast)
-                    {
-                        int width = i - j + 1;
-                        int resultArea = CalculateBlockArea(width, height);
-                        if(resultArea > maxRectangleArea)
-                        {
-                            maxRectangleArea = resultArea;
-                        }
-                    }
-                }
-            }
-            return maxRectangleArea;
+            return 0;
         }
 
         private static int CalculateBlockArea(int blockWidth, int blockHeight)
