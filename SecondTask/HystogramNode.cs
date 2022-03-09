@@ -25,31 +25,55 @@ namespace SecondTask
 
         public static int MaximumRectangleArea(HystogramNode[] array)
         {
-            int maxRectangleArea = FindMinValueOfArray(array) * array.Length;
+            int maxRectangleArea = -1;
             Stack<HystogramNode> stack = new Stack<HystogramNode>();
-            HystogramNode nullElement = new HystogramNode(0, 0);
+            HystogramNode nullElement = new HystogramNode(0, -1);
             stack.Push(nullElement);
 
-            for (int i = 0; i < array.Length; i++)
+            for(int i = 0; i < array.Length; i++)
             {
-                if (array[i].NodeHeight >= stack.Peek().NodeHeight)
+                if (array[i].NodeHeight > stack.Peek().NodeHeight)
                 {
                     stack.Push(array[i]);
                 }
-                else
+                else if(array[i].NodeHeight <= stack.Peek().NodeHeight)
                 {
-                    int maxRectangleOfCurrentHystogram = StackHystogramBlockArea(stack, stack.Count);
-                    if (maxRectangleArea < maxRectangleOfCurrentHystogram)
+                    for(int stackIndex = 0; stackIndex < stack.Count; stackIndex++)
                     {
-                        maxRectangleArea = maxRectangleOfCurrentHystogram;
+                        if(stack.Peek().NodeHeight > array[i].NodeHeight)
+                        {
+                            int betweenResult = stack.Peek().NodeHeight * (i + 1);
+                            if (betweenResult >= maxRectangleArea)
+                            {
+                                maxRectangleArea = betweenResult;
+                            }
+                            stack.Pop();
+                        }
                     }
+                    stack.Push(array[i]);
                 }
             }
-            int stackHystogramBlockArea = StackHystogramBlockArea(stack, stack.Count);
-            if (maxRectangleArea < stackHystogramBlockArea)
-            {
-                maxRectangleArea = stackHystogramBlockArea;
-            }
+
+            //for (int i = 0; i < array.Length; i++)
+            //{
+            //    if (array[i].NodeHeight >= stack.Peek().NodeHeight)
+            //    {
+            //        stack.Push(array[i]);
+            //    }
+            //    else
+            //    {
+            //        int maxRectangleOfCurrentHystogram = StackHystogramBlockArea(stack, stack.Count);
+            //        if (maxRectangleArea < maxRectangleOfCurrentHystogram)
+            //        {
+            //            maxRectangleArea = maxRectangleOfCurrentHystogram;
+            //        }
+            //    }
+            //}
+            //int stackHystogramBlockArea = StackHystogramBlockArea(stack, stack.Count);
+            //if (maxRectangleArea < stackHystogramBlockArea)
+            //{
+            //    maxRectangleArea = stackHystogramBlockArea;
+            //}
             return maxRectangleArea;
         }
 
@@ -73,7 +97,7 @@ namespace SecondTask
 
         private static int FindMinValueOfArray(HystogramNode[] array)
         {
-            int minValue = 1;
+            int minValue = array[0].NodeHeight;
             for (int i = 0; i < array.Length; i++)
             {
                 if (minValue > array[i].NodeHeight)
