@@ -40,17 +40,8 @@ namespace SecondTask
             int countOfHystogramElements = array.Length; //количество прямоугольников гистограммы
             Stack<HystogramNode> stack = new Stack<HystogramNode>(); //заводим стек из прямоугольников гистограммы
             HystogramNode minusOneElement = new HystogramNode(0, -1); //добавляем элемент с высотой -1, который никогда не будет вытолкнут из стека
-            HystogramNode nullElement = new HystogramNode(countOfHystogramElements + 1, 0);
             stack.Push(minusOneElement); //добавляем элемент высотой -1 в стек
-            
-            for(int i = 1; i <= countOfHystogramElements + 1; i++)
-            {
-                //if(i <= countOfHystogramElements)
-                //{
-                //    array[i].NodeHeight = 
-                //}
-                //else
-            }
+          
 
             //for(int i = 0; i < array.Length; i++)
             //{
