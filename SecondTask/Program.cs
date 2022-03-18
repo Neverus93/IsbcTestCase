@@ -11,11 +11,11 @@ namespace SecondTask
             //Console.Write("Введите максимальное значение высоты прямоугольника в гистограмме: ");
             //int rectangleMaxHeight = int.Parse(Console.ReadLine());
 
-            HystogramNode[] test = new HystogramNode[4];
+            HystogramNode[] test = new HystogramNode[3];
             test[0] = new HystogramNode(1, 10);
-            test[1] = new HystogramNode(1, 5);
-            test[2] = new HystogramNode(1, 6);
-            test[4] = new HystogramNode(1, 0); //постоянный добавочный последний член
+            test[1] = new HystogramNode(2, 5);
+            test[2] = new HystogramNode(2, 6);
+            //test[3] = new HystogramNode(4, 0); //постоянный добавочный последний член
             //test[3] = new HystogramNode(4, 8);
             //test[4] = new HystogramNode(5, 6);
 

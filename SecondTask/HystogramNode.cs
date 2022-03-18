@@ -6,11 +6,11 @@ namespace SecondTask
     public class HystogramNode
     {
         public int NodeHeight { get; set; }
-        public int NodeWidth { get; set; }
+        public int NodeIndex { get; set; }
         public HystogramNode(int width, int height)
         {
             NodeHeight = height;
-            NodeWidth = width;
+            NodeIndex = width;
         }
         public static HystogramNode[] GenerateHeightArray(int count, int maxValue)
         {
@@ -42,83 +42,31 @@ namespace SecondTask
             HystogramNode minusOneElement = new HystogramNode(0, -1); //добавляем элемент с высотой -1, который никогда не будет вытолкнут из стека
             stack.Push(minusOneElement); //добавляем элемент высотой -1 в стек
           
-
-            //for(int i = 0; i < array.Length; i++)
-            //{
-            //    if (array[i].NodeHeight > stack.Peek().NodeHeight)
-            //    {
-            //        stack.Push(array[i]);
-            //    }
-            //    else if(array[i].NodeHeight <= stack.Peek().NodeHeight)
-            //    {
-            //        //for(int stackIndex = 0; stackIndex < stack.Count; stackIndex++)
-            //        //{
-            //        //    if(stack.Peek().NodeHeight > array[i].NodeHeight)
-            //        //    {
-            //        //        int betweenResult = stack.Peek().NodeHeight * i;
-            //        //        if (betweenResult >= maxRectangleArea)
-            //        //        {
-            //        //            maxRectangleArea = betweenResult;
-            //        //        }
-            //        //        stack.Pop();
-            //        //    }
-            //        //}
-            //        //stack.Push(array[i]);
-            //    }
-            //}
-
-            ////for (int i = 0; i < array.Length; i++)
-            ////{
-            ////    if (array[i].NodeHeight >= stack.Peek().NodeHeight)
-            ////    {
-            ////        stack.Push(array[i]);
-            ////    }
-            ////    else
-            ////    {
-            ////        int maxRectangleOfCurrentHystogram = StackHystogramBlockArea(stack, stack.Count);
-            ////        if (maxRectangleArea < maxRectangleOfCurrentHystogram)
-            ////        {
-            ////            maxRectangleArea = maxRectangleOfCurrentHystogram;
-            ////        }
-            ////    }
-            ////}
-            ////int stackHystogramBlockArea = StackHystogramBlockArea(stack, stack.Count);
-            ////if (maxRectangleArea < stackHystogramBlockArea)
-            ////{
-            ////    maxRectangleArea = stackHystogramBlockArea;
-            ////}
+            for(int i = 0; i < countOfHystogramElements; i++)
+            {
+                if (array[i].NodeHeight > stack.Peek().NodeHeight)
+                {
+                    stack.Push(array[i]);
+                }
+                else
+                {
+                    for(int j = 0; j > stack.Count; j++) //TODO Не заходит в цикл
+                    {
+                        int result = stack.Pop().NodeHeight * (j - i + 1);
+                        if (result > maxRectangleArea)
+                        {
+                            maxRectangleArea = result;
+                        }
+                    }
+                    stack.Push(array[i]);
+                }
+            }
             return maxRectangleArea;
         }
 
         public override string ToString()
         {
-            return $"({NodeWidth},{NodeHeight})";
-        }
-
-        private static int StackHystogramBlockArea(Stack<HystogramNode> stack, int arrayLength)
-        {
-            int stackHystogramBlockArea = 0;
-            for (int i = 0; i < arrayLength; i++)
-            {
-                if (stackHystogramBlockArea <= stack.Peek().NodeHeight * (i + 1))
-                {
-                    stackHystogramBlockArea = stack.Pop().NodeHeight * (i + 1);
-                }
-            }
-            return stackHystogramBlockArea;
-        }
-
-        private static int FindMinValueOfArray(HystogramNode[] array)
-        {
-            int minValue = array[0].NodeHeight;
-            for (int i = 0; i < array.Length; i++)
-            {
-                if (minValue > array[i].NodeHeight)
-                {
-                    minValue = array[i].NodeHeight;
-                }
-            }
-            return minValue;
+            return $"({NodeIndex},{NodeHeight})";
         }
     }
 }
