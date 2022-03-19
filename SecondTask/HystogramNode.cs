@@ -44,21 +44,37 @@ namespace SecondTask
           
             for(int i = 0; i < countOfHystogramElements; i++)
             {
+                int result = 0;
                 if (array[i].NodeHeight > stack.Peek().NodeHeight)
                 {
                     stack.Push(array[i]);
                 }
                 else
                 {
-                    for(int j = 0; j > stack.Count; j++) //TODO Не заходит в цикл
+                    if(array[i].NodeHeight == 0)
                     {
-                        int result = stack.Pop().NodeHeight * (j - i + 1);
-                        if (result > maxRectangleArea)
+                        for (int j = 0; j < stack.Count; j++)
                         {
-                            maxRectangleArea = result;
+                            result = stack.Pop().NodeHeight * (j + 1);
+                            if(result > maxRectangleArea)
+                            {
+                                maxRectangleArea = result;
+                            }
                         }
                     }
-                    stack.Push(array[i]);
+                    else if(array[i].NodeHeight > 0)
+                    {
+                        for(int j = i; j >= array[i].)
+                    }
+                    //for(int j = 0; j > stack.Count; j++) //TODO Не заходит в цикл
+                    //{
+                    //    int result = stack.Pop().NodeHeight * (j - i + 1);
+                    //    if (result > maxRectangleArea)
+                    //    {
+                    //        maxRectangleArea = result;
+                    //    }
+                    //}
+                    //stack.Push(array[i]);
                 }
             }
             return maxRectangleArea;
