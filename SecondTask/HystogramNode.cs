@@ -52,13 +52,14 @@ namespace SecondTask
                 }
                 else
                 {
-                    while (array[i].NodeHeight < stack.Peek().NodeHeight)
+                    while (array[i].NodeHeight <= stack.Peek().NodeHeight)
                     {
                         int result = stack.Peek().NodeHeight * (i - stack.Peek().NodeIndex + 1);
                         if(result > maxRectangleArea)
                         {
                             maxRectangleArea = result;
                         }
+                        // добавить в рассмотрение элемент, находящийся перед последним вытолкнутым из стека
                         stack.Pop();
                     }
 
